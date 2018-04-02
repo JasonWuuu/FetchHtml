@@ -5,23 +5,35 @@ using System.Text;
 using FetchHtml.Models;
 using HtmlAgilityPack;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace FetchHtml
 {
-    public class AgricultureHtmlHelper : IHtmlHelper<MainPageQueryModel>
+    public class AgricultureHtmlHelper : BaseHtmlHelper<MainPageQueryModel>, IHtmlHelper<MainPageQueryModel>
     {
-        public IEnumerable<QueryResult> Execute(MainPageQueryModel queryModel)
+        public bool CanExecute(IQueryModel queryModel)
+        {
+            return queryModel.GetType().Equals(typeof(MainPageQueryModel));
+        }
+
+        public Task<IEnumerable<QueryResult>> Execute(IQueryModel queryModel)
+        {
+            return CanExecute(queryModel) ? Execute((MainPageQueryModel)queryModel) : Task.FromResult<IEnumerable<QueryResult>>(null);
+
+        }
+
+        public Task<IEnumerable<QueryResult>> Execute(MainPageQueryModel queryModel)
         {
 
-            ExecuteMainPage(queryModel);
+            ExecuteMainPage(queryModel).Wait();
 
             return ExecuteSubPage(queryModel);
         }
 
-        public void ExecuteMainPage(MainPageQueryModel queryModel)
+        public async Task ExecuteMainPage(MainPageQueryModel queryModel)
         {
             HtmlWeb htmlWeb = new HtmlWeb();
-            HtmlDocument document = htmlWeb.Load(queryModel.Url, "GET");
+            HtmlDocument document = await htmlWeb.LoadFromWebAsync(queryModel.Url);
 
             HtmlNodeCollection hrefs = document.DocumentNode.SelectNodes("//div[@class='zleft']//a[@href]");
 
@@ -45,14 +57,14 @@ namespace FetchHtml
             }
         }
 
-        public IEnumerable<QueryResult> ExecuteSubPage(MainPageQueryModel queryModel)
+        public async Task<IEnumerable<QueryResult>> ExecuteSubPage(MainPageQueryModel queryModel)
         {
             List<QueryResult> queryResultList = new List<QueryResult>();
 
             HtmlWeb htmlWeb = new HtmlWeb();
             foreach (SubPageQueryModel subModel in queryModel.SubPageQueryModels)
             {
-                HtmlDocument document = htmlWeb.Load(subModel.Url, "GET");
+                HtmlDocument document = await htmlWeb.LoadFromWebAsync(subModel.Url);
                 HtmlNode titleNode = document.DocumentNode.SelectSingleNode("//div[@class='zleft']/h1");
 
                 HtmlNode bodyNode = document.DocumentNode.SelectSingleNode("//div[@class='zlcont']/div[@id='TRS_AUTOADD']");
@@ -64,6 +76,9 @@ namespace FetchHtml
                     Url = subModel.Url
                 });
             }
+
+            //save to db
+            SaveResultToDb(queryResultList).Wait();
 
             return queryResultList;
         }

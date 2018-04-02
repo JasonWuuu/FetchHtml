@@ -11,9 +11,9 @@ namespace FetchHtml
         static void Main(string[] args)
         {
 
-            var agricultureHtmlHelper = new AgricultureHtmlHelper();
+            IHtmlHelper htmlHelper = new AgricultureHtmlHelper();
 
-            var queryResult = agricultureHtmlHelper.Execute(new MainPageQueryModel()
+            var queryResult = htmlHelper.Execute(new MainPageQueryModel()
             {
                 Url = "http://jiuban.moa.gov.cn/zwllm/jcyj/",
                 Title = "中华人民共和国农业部",
@@ -21,22 +21,10 @@ namespace FetchHtml
             });
 
 
-            var result = queryResult.ToList();
+            var result = queryResult.GetAwaiter().GetResult().ToList();
+            
 
-            string filePath = Path.Combine(Environment.CurrentDirectory, "result.txt");
-            File.Delete(filePath);
-            //FileStream fileStream = File.Open(, FileMode.OpenOrCreate);
-            foreach (var item in result)
-            {
-                string[] arr = new string[] {
-                    "============================================================================",
-                    item.Title,
-                    item.Body
-                };
-                File.AppendAllLinesAsync(filePath, arr, Encoding.UTF8).Wait();
-            }
-
-            Console.WriteLine("===========完成===========");
+            Console.WriteLine("===========Completed===========");
             Console.ReadLine();
 
         }

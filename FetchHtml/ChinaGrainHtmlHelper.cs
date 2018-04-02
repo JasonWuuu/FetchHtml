@@ -6,11 +6,11 @@ using HtmlAgilityPack;
 
 namespace FetchHtml
 {
-    public class ChinaGrainHtmlHelper : BaseHtmlHelper<SubPageQueryModel>, IHtmlHelper<SubPageQueryModel>
-    {
-        public override IEnumerable<QueryResult> Execute(SubPageQueryModel queryModel)
-        {
-            return null;
-        }
-    }
+    //public class ChinaGrainHtmlHelper : BaseHtmlHelper<SubPageQueryModel>, IHtmlHelper<SubPageQueryModel>
+    //{
+    //    public override IEnumerable<QueryResult> Execute(SubPageQueryModel queryModel)
+    //    {
+    //        return null;
+    //    }
+    //}
 }

@@ -4,6 +4,13 @@ using System.Text;
 
 namespace FetchHtml.Models
 {
+    public interface IQueryModel
+    {
+        string Url { get; set; }
+
+        string Title { get; set; }
+    }
+
     public abstract class QueryModel
     {
         public string Url { get; set; }
@@ -12,7 +19,7 @@ namespace FetchHtml.Models
     }
 
 
-    public class MainPageQueryModel : QueryModel
+    public class MainPageQueryModel : QueryModel, IQueryModel
     {
         private List<SubPageQueryModel> _subPagelist = new List<SubPageQueryModel>();
         public IEnumerable<string> KeyWords { get; set; }
@@ -31,7 +38,7 @@ namespace FetchHtml.Models
 
     }
 
-    public class SubPageQueryModel : QueryModel
+    public class SubPageQueryModel : QueryModel, IQueryModel
     {
 
     }
