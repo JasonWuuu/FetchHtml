@@ -13,7 +13,7 @@ namespace FetchHtml
         bool CanExecute(IQueryModel queryModel);
     }
 
-    public interface IHtmlHelper<in T> : IHtmlHelper where T : QueryModel
+    public interface IHtmlHelper<in T> : IHtmlHelper where T : IQueryModel
     {
         Task<IEnumerable<QueryResult>> Execute(T t);
 
