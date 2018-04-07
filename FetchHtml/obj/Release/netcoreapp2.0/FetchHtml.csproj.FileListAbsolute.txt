@@ -1,0 +1,11 @@
+C:\Users\cong.wu\Desktop\AI 组\FetchHtml\FetchHtml\bin\Release\netcoreapp2.0\FetchHtml.deps.json
+C:\Users\cong.wu\Desktop\AI 组\FetchHtml\FetchHtml\bin\Release\netcoreapp2.0\FetchHtml.runtimeconfig.json
+C:\Users\cong.wu\Desktop\AI 组\FetchHtml\FetchHtml\bin\Release\netcoreapp2.0\FetchHtml.runtimeconfig.dev.json
+C:\Users\cong.wu\Desktop\AI 组\FetchHtml\FetchHtml\bin\Release\netcoreapp2.0\FetchHtml.dll
+C:\Users\cong.wu\Desktop\AI 组\FetchHtml\FetchHtml\bin\Release\netcoreapp2.0\FetchHtml.pdb
+C:\Users\cong.wu\Desktop\AI 组\FetchHtml\FetchHtml\obj\Release\netcoreapp2.0\FetchHtml.csprojResolveAssemblyReference.cache
+C:\Users\cong.wu\Desktop\AI 组\FetchHtml\FetchHtml\obj\Release\netcoreapp2.0\FetchHtml.csproj.CoreCompileInputs.cache
+C:\Users\cong.wu\Desktop\AI 组\FetchHtml\FetchHtml\obj\Release\netcoreapp2.0\FetchHtml.AssemblyInfoInputs.cache
+C:\Users\cong.wu\Desktop\AI 组\FetchHtml\FetchHtml\obj\Release\netcoreapp2.0\FetchHtml.AssemblyInfo.cs
+C:\Users\cong.wu\Desktop\AI 组\FetchHtml\FetchHtml\obj\Release\netcoreapp2.0\FetchHtml.dll
+C:\Users\cong.wu\Desktop\AI 组\FetchHtml\FetchHtml\obj\Release\netcoreapp2.0\FetchHtml.pdb

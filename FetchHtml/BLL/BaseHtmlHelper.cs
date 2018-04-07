@@ -6,15 +6,16 @@ using System.Threading.Tasks;
 using FetchHtml.Models;
 using HtmlAgilityPack;
 
-namespace FetchHtml
-{
+namespace FetchHtml.BLL
+{ 
+
     public abstract class BaseHtmlHelper<T>
     {
-        protected virtual IEnumerable<QueryResult> Execute(T queryModel)
-        {
-            //擦，没法共用
-            return null;
-        }
+        //public virtual Task<IEnumerable<QueryResult>> Execute(T queryModel)
+        //{
+        //    //擦，没法共用
+        //    return Task.FromResult<IEnumerable<QueryResult>>(null);
+        //}
 
         protected async virtual Task<bool> SaveResultToDb(IEnumerable<QueryResult> queryResultList)
         {
@@ -33,5 +34,7 @@ namespace FetchHtml
 
             return true;
         }
+
+        
     }
 }

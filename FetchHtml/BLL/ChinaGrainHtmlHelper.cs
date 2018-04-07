@@ -4,7 +4,7 @@ using System.Text;
 using FetchHtml.Models;
 using HtmlAgilityPack;
 
-namespace FetchHtml
+namespace FetchHtml.BLL
 {
     //public class ChinaGrainHtmlHelper : BaseHtmlHelper<SubPageQueryModel>, IHtmlHelper<SubPageQueryModel>
     //{

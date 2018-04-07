@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace FetchHtml
+namespace FetchHtml.BLL
 {
 
     public interface IHtmlHelper

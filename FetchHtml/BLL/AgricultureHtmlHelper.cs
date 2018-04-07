@@ -7,7 +7,7 @@ using HtmlAgilityPack;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace FetchHtml
+namespace FetchHtml.BLL
 {
     public class AgricultureHtmlHelper : BaseHtmlHelper<MainPageQueryModel>, IHtmlHelper<MainPageQueryModel>
     {
@@ -65,6 +65,7 @@ namespace FetchHtml
             foreach (SubPageQueryModel subModel in queryModel.SubPageQueryModels)
             {
                 HtmlDocument document = await htmlWeb.LoadFromWebAsync(subModel.Url);
+                
                 HtmlNode titleNode = document.DocumentNode.SelectSingleNode("//div[@class='zleft']/h1");
 
                 HtmlNode bodyNode = document.DocumentNode.SelectSingleNode("//div[@class='zlcont']/div[@id='TRS_AUTOADD']");
